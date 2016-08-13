@@ -1,0 +1,12 @@
+## Email Header
+Received
+From
+Sender
+To
+Message-Id
+Subject
+MIME-Version
+Content-Type
+Content-Transfer-Encoding
+X-Originating-IP
+Date
