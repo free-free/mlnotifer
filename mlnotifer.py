@@ -12,9 +12,9 @@ class ImapReceiver(imaplib.IMAP4_SSL):
         self._passwd = password
         super(ImapReceiver, self).__init__(self._host)
     
-    def active_receiver(self):
+    def activate_receiver(self):
         try:
-            self.login(self._user, self._passwd)
+        self.login(self._user, self._passwd)
         except Exception:
             raise Exception("Login Faield")
     
