@@ -14,7 +14,7 @@ class ImapReceiver(imaplib.IMAP4_SSL):
     
     def activate_receiver(self):
         try:
-        self.login(self._user, self._passwd)
+            self.login(self._user, self._passwd)
         except Exception:
             raise Exception("Login Faield")
     
