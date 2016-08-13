@@ -6,11 +6,15 @@ import email
 
 class ImapReceiver(imaplib.IMAP4_SSL):
     
-    def __init__(self, host, user, password):
+    def __init__(self, host, user, password, port=None):
         self._host = host
         self._user = user
         self._passwd = password
-        super(ImapReceiver, self).__init__(self._host)
+        self._port = port 
+        if self._port:
+            super(ImapReceiver, self).__init__(self._host, self._port)
+        else:    
+            super(ImapReceiver, self).__init__(self._host)
     
     def activate_receiver(self):
         try:
