@@ -5,20 +5,20 @@ config = {
          {
              "host":"imap.163.com",
              "user":"18281573692@163.com",
-             "password":"huangbiao526114", 
+             "password":"xxxxxxxxxxxxx", 
              "port":"",
              "email_wlist":["*"],
              "email_blist":[""],
-             "notify_phone":["18281573692",]
+             "notify_phone":["182********",]
          },
          {
              "host":"imap.gmail.com",
              "user":"19941222hb@gmail.com",
-             "password":"huangbiao526114",
+             "password":"xxxxxx",
              "port":993,
              "email_wlist":["*"],
              "email_blist":[""],
-             "notify_phone":["18281573692"],
+             "notify_phone":["182*******"],
          },   
      ]
 }
