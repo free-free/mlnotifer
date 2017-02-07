@@ -33,7 +33,7 @@ class ImapReceiver(imaplib.IMAP4_SSL):
     
     def get_recent_mail_header(self, mailbox="INBOX", readonly=True):
         self.select(mailbox, readonly)
-        typ, data = self.search(None, "NEW")
+        typ, data = self.search(None, "RECENT")
         msg_set = data[0].split()[::-1]
         msg_headers = []
         for msg_id in msg_set:
