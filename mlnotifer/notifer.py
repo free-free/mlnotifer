@@ -22,7 +22,7 @@ class TwilioSMSNotifer(SMSNotifer):
         super(SMSDriver, self).__init__()
         self._twilio_client = Client(acount_id, token)
         
-    def send(self, from_, to_, body):
+    def notify(self, from_, to_, body):
         self._twillio_client.messages.create(to=to_,\
             from_=from_, body=body)
 
@@ -30,6 +30,6 @@ class TwilioSMSNotifer(SMSNotifer):
 class SubmailSMSNotifer(SMSNotifer):
     
     
-    def send(self, from_, to_, body):
+    def notify(self, from_, to_, body):
         pass
 
