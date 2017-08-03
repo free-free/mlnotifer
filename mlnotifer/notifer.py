@@ -20,9 +20,9 @@ class TwilioSMSNotifer(SMSNotifer):
     SV = 'twilio'
 
 
-    def __init__(self, acount_id=None, token=None):
-        super(SMSDriver, self).__init__()
-        self._twilio_client = Client(acount_id, token)
+    def __init__(self, sid=None, token=None):
+        super(SMSNotifer, self).__init__()
+        self._twilio_client = Client(sid, token)
         
     def notify(self, from_, to_, body):
         self._twillio_client.messages.create(to=to_,\
