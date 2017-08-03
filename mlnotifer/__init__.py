@@ -1,7 +1,7 @@
 # -*- encoding:utf-8 -*-
 
 import re
-from notifer import TwilioSMSNotifer
+from notifer import get_notifer_by_sv
 from mlfetcher import IMAPFetcher
 
 
@@ -23,10 +23,17 @@ def get_imap_host(email_addr):
         return ''
 
 
-class Mlnofiter(object):
+class Client(object):
 
     def __init__(self):
+        self._notifer = None
+
+    def setup_notifer(self, notifer_name, notifer_acount):
+        self._notifer = get_notifer_by_sv(notifer_name)(**notifer_acount)
+        
+    def run(self, email_list):
         pass
 
 
-
+if __name__ == '__main__':
+    print(get_notifer_by_sv('twilio'))
