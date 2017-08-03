@@ -1,6 +1,9 @@
 # -*- encoding:utf-8 -*-
 
 import re
+import os
+import yaml
+
 from notifer import get_notifer_by_sv
 from mlfetcher import IMAPFetcher
 
@@ -22,6 +25,17 @@ def get_imap_host(email_addr):
     except IndexError:
         return ''
 
+def get_profile(profile_path=None):
+    profile_path = profile_path or os.path.join(os.path.dirname(\
+        os.path.dirname(os.path.realpath(__file__))), 'profile.yaml')
+    try:
+        with open(profile_path, 'r+') as f:
+            profile = yaml.load(f)
+    except IOError as e:
+        print(e)
+        print("No profile exists! please check your profile")
+    return profile
+
 
 class Client(object):
 
@@ -29,11 +43,15 @@ class Client(object):
         self._notifer = None
 
     def setup_notifer(self, notifer_name, notifer_acount):
+        if not isinstance(notifer_acount, dict):
+            raise TypeError("NO notifer acount information found")
         self._notifer = get_notifer_by_sv(notifer_name)(**notifer_acount)
-        
-    def run(self, email_list):
-        pass
+
+    def run(self):
+        profile = get_profile()
+        self.setup_notifer(profile.get('notifer','twilio'),\
+            profile.get('twilio')),
 
 
 if __name__ == '__main__':
-    print(get_notifer_by_sv('twilio'))
+    Client().run()
